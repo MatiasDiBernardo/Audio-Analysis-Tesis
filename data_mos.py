@@ -1,0 +1,10 @@
+config_TTS_MOS = {'DeepFilterNet_DNSMOS_2-7': (3.903, 0.517), 
+'DeepFilterNet_DNSMOS_3-2': (3.817, 0.639), 
+'DeepFilterNet_NISQA_4-2': (3.958, 0.464), 
+'Demucs_DNSMOS_2-7': (3.598, 0.615), 
+'Demucs_DNSMOS_3-4': (3.69, 0.613), 
+'Demucs_NISQA_3-5': (3.593, 0.474), 
+'Demucs_NISQA_4-2': (3.67, 0.553), 
+'NoDenoising_DNSMOS_2-7': (3.797, 0.671), 
+'NoDenoising_NISQA_3-8': (3.943, 0.431), 
+'NoDenoising_NISQA_4-2': (3.959, 0.422)}
