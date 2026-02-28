@@ -8,3 +8,14 @@ config_TTS_MOS = {'DeepFilterNet_DNSMOS_2-7': (3.903, 0.517),
 'NoDenoising_DNSMOS_2-7': (3.797, 0.671), 
 'NoDenoising_NISQA_3-8': (3.943, 0.431), 
 'NoDenoising_NISQA_4-2': (3.959, 0.422)}
+
+config_TTS_MOS_es = {'DeepFilterNet_DNSMOS_2-7': (3.316, 1.026),
+'DeepFilterNet_DNSMOS_3-2': (3.548, 0.786),
+'DeepFilterNet_NISQA_4-2': (3.408, 1.021),
+'Demucs_DNSMOS_2-7': (3.089, 0.957),
+'Demucs_DNSMOS_3-4': (3.245, 0.959),
+'Demucs_NISQA_3-5': (3.084, 0.973),
+'Demucs_NISQA_4-2': (2.878, 1.003),
+'NoDenoising_DNSMOS_2-7': (3.596, 0.836),
+'NoDenoising_NISQA_3-8': (3.422, 1.003),
+'NoDenoising_NISQA_4-2': (3.393, 1.01)}

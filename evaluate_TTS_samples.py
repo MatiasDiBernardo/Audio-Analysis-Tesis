@@ -4,7 +4,7 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
-from data_mos import config_TTS_MOS
+from data_mos import config_TTS_MOS, config_TTS_MOS_es
 from data_computed_datasets import config_obj_metrics
 
 # Variable to select which objective metric to plot
