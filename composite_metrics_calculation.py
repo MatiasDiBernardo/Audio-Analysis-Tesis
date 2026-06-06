@@ -21,16 +21,16 @@ def calculate_metrics(pro):
             }
 
     # Pesos de la métrica global
-    w1 = 1
-    w2 = 1
-    w3 = 1
-    w4 = 1
+    w1 = 0.1  # DR
+    w2 = 0.5  # SQ
+    w3 = 1.2  # AP
+    w4 = 4  # SD
     
     # Cálculo de métrica compuesta
     DR = 1 - (pro['HOURS']/raw['HOURS'])
     SQ = (raw['PESQ'][0]/pro['PESQ'][0]) + (raw['SI-SDR'][0]/pro['SI-SDR'][0]) + (raw['SNR'][0]/pro['SNR'][0])
     AP = (pro['T30'][0]/raw['T30'][0]) + (raw['C50'][0]/pro['C50'][0])
-    SD = np.abs(1 - (pro['F0'][1]/raw['F0'][1])) + (pro['MCD'][0]/5)
+    SD = np.abs(1 - (pro['F0'][1]/raw['F0'][1])) + (pro['MCD'][0]/10)
     TOT = (DR * w1 + SQ * w2 + AP * w3 + SD * w4)
 
     return [DR * w1, SQ * w2, AP * w3, SD * w4, TOT]

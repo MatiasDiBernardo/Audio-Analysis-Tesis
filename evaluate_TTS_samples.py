@@ -8,7 +8,7 @@ from data_mos import config_TTS_MOS, config_TTS_MOS_es
 from data_computed_datasets import config_obj_metrics
 
 # Variable to select which objective metric to plot
-obj_metrics = 'TOT'  # Options: 'RD', 'CS', 'CA', 'DH', 'TOT'
+obj_metrics = 'CS'  # Options: 'RD', 'CS', 'CA', 'DH', 'TOT'
 
 def plot_mos_vs_objective_metric(obj_metrics_type='RD'):
     """
@@ -26,7 +26,7 @@ def plot_mos_vs_objective_metric(obj_metrics_type='RD'):
     """
     
     # Extract common configurations that exist in both dictionaries
-    common_configs = set(config_TTS_MOS.keys()) & set(config_obj_metrics.keys())
+    common_configs = set(config_TTS_MOS_es.keys()) & set(config_obj_metrics.keys())
     
     # Prepare data: extract metric values and MOS values
     metric_values = []
@@ -36,7 +36,7 @@ def plot_mos_vs_objective_metric(obj_metrics_type='RD'):
     
     for config in common_configs:
         metric_val = config_obj_metrics[config][obj_metrics_type]
-        mos_mean, mos_std = config_TTS_MOS[config]
+        mos_mean, mos_std = config_TTS_MOS_es[config]
         
         metric_values.append(metric_val)
         mos_means.append(mos_mean)
