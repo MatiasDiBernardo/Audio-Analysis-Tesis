@@ -8,9 +8,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from data_mos import config_TTS_MOS_es
+from data_mos import rta_TTS_MOS_QwenTTS_es as config_TTS_MOS_es
 from data_likelihood import LHOOD_VALUES
-
 
 # Mapeo entre las 8 configuraciones de likelihood y sus contrapartes
 # en config_TTS_MOS_es (data_mos.py).
@@ -68,24 +67,24 @@ def plot_density_vs_mos(data):
     labels = [data["labels"][i] for i in order]
 
     fig, ax = plt.subplots(figsize=(12, 7))
-    ax.plot(x, y, 'o', markersize=8, linewidth=2,
-            color='dodgerblue', alpha=0.8, label='MOS')
+    ax.plot(x, y, 'o', markersize=10, linewidth=2,
+            color='dodgerblue', alpha=0.8, label='Qwen TTS')
 
-    ax.tick_params(axis='both', labelsize=12)
+    ax.tick_params(axis='both', labelsize=16)
 
     for xi, yi, name in zip(x, y, labels):
         ax.annotate(name, (xi, yi), textcoords="offset points",
-                    xytext=(0, 10), ha='center', fontsize=10, alpha=0.8)
+                    xytext=(0, 12), ha='center', fontsize=14, alpha=0.8)
 
-    ax.set_xlabel('Density estimation (likelihood mean)', fontsize=14)
-    ax.set_ylabel('TTS MOS (Mean)', fontsize=14)
+    ax.set_xlabel('Estimación de densidad (media de likelihood)', fontsize=18)
+    ax.set_ylabel('MOS del TTS (media)', fontsize=18)
     ax.grid(True, alpha=0.3, linestyle='--')
-    ax.legend(fontsize=12)
+    ax.legend(fontsize=16)
     plt.tight_layout()
 
     corr = np.corrcoef(x, y)[0, 1]
-    print(f"Correlation (Density vs MOS): {corr:.4f}")
-    print(f"Number of configurations plotted: {len(x)}")
+    print(f"Correlación (Densidad vs MOS): {corr:.4f}")
+    print(f"Número de configuraciones representadas: {len(x)}")
 
 
 if __name__ == "__main__":

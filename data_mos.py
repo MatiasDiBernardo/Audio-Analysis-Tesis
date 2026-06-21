@@ -1,4 +1,4 @@
-config_TTS_MOS = {'DeepFilterNet_DNSMOS_2-7': (3.903, 0.517), 
+rta_TTS_MOS_QwenTTS = {'DeepFilterNet_DNSMOS_2-7': (3.903, 0.517), 
 'DeepFilterNet_DNSMOS_3-2': (3.817, 0.639), 
 'DeepFilterNet_NISQA_4-2': (3.958, 0.464), 
 'Demucs_DNSMOS_2-7': (3.598, 0.615), 
@@ -9,7 +9,7 @@ config_TTS_MOS = {'DeepFilterNet_DNSMOS_2-7': (3.903, 0.517),
 'NoDenoising_NISQA_3-8': (3.943, 0.431), 
 'NoDenoising_NISQA_4-2': (3.959, 0.422)}
 
-config_TTS_MOS_es = {'DeepFilterNet_DNSMOS_2-7': (3.316, 1.026),
+rta_TTS_MOS_QwenTTS_es = {'DeepFilterNet_DNSMOS_2-7': (3.316, 1.026),
 'DeepFilterNet_DNSMOS_3-2': (3.548, 0.786),
 'DeepFilterNet_NISQA_4-2': (3.408, 1.021),
 'Demucs_DNSMOS_2-7': (3.089, 0.957),
