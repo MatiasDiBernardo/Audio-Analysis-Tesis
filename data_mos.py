@@ -19,3 +19,14 @@ rta_TTS_MOS_QwenTTS_es = {'DeepFilterNet_DNSMOS_2-7': (3.316, 1.026),
 'NoDenoising_DNSMOS_2-7': (3.596, 0.836),
 'NoDenoising_NISQA_3-8': (3.422, 1.003),
 'NoDenoising_NISQA_4-2': (3.393, 1.01)}
+
+rta_TTS_MOS_F5TTS_es = {'DeepFilterNet_DNSMOS_2-7': (3.327, 0.77),
+                        'DeepFilterNet_DNSMOS_3-2': (3.42, 0.785),
+                        'DeepFilterNet_NISQA_4-2': (3.214, 0.784),
+                        'Demucs_DNSMOS_2-7': (2.969, 0.913),
+                        'Demucs_DNSMOS_3-4': (3.228, 0.832),
+                        'Demucs_NISQA_3-5': (3.04, 0.681),
+                        'Demucs_NISQA_4-2': (2.834, 0.732),
+                        'NoDenoising_DNSMOS_2-7': (3.503, 0.799),
+                        'NoDenoising_NISQA_3-8': (3.327, 0.832),
+                        'NoDenoising_NISQA_4-2': (3.237, 0.789)}
