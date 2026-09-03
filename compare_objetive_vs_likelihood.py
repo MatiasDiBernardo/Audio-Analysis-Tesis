@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 import numpy as np
 
-from data_likelihood import LHOOD_VALUES
+from data_likelihood import LHOOD_VALUES_FILT
 from data_computed_datasets import config_obj_metrics
 
 
@@ -58,7 +58,7 @@ def _collect_data():
             print(f"[warning] Objective metrics key faltante: {obj_key}")
             continue
 
-        l_mean, _ = LHOOD_VALUES[lhood_key]
+        l_mean, _ = LHOOD_VALUES_FILT[lhood_key]
         obj = config_obj_metrics[obj_key]
 
         labels.append(_short_label(lhood_key))

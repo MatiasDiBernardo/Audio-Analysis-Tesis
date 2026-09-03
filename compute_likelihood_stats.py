@@ -20,7 +20,7 @@ from statistics import mean, pstdev, stdev
 
 import pandas as pd
 
-from data_likelihood import LHOOD_VALUES
+from data_likelihood import LHOOD_VALUES_FILT, LHOOD_VALUES
 
 
 CSV_DIR = Path(__file__).parent / "All_likelihood"
@@ -144,8 +144,9 @@ def main() -> None:
         print(f"    {key!r}: [{m:.5f}, {s:.5f}],")
     print("}\n")
 
-    print("Comparison against data_likelihood.LHOOD_VALUES:")
-    compare(computed, LHOOD_VALUES)
+    print("Comparison against data_likelihood.LHOOD_VALUES_FILT:")
+    compare(computed, LHOOD_VALUES_FILT)
+
 
 
 if __name__ == "__main__":

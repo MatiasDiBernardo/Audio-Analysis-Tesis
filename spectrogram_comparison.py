@@ -35,6 +35,7 @@ DEMUCS_PREFIX = "Demucs_"
 DFN_PREFIX = "DeepFilterNet_"
 NODEN_PREFIX = "NoDenoising_"
 ORIGINAL_DIR_NAME = "Original"
+SPECIFIC_URI = "audio_15_0093"
 
 AUDIO_EXTS = {".mp3", ".wav", ".flac"}
 
@@ -87,10 +88,13 @@ def compute_log_spectrogram(path: Path):
 def plot_panels(filename, panels):
     """panels: list of (title, path)."""
     n = len(panels)
-    fig, axes = plt.subplots(n, 1, figsize=(13, 3 * n + 0.5), sharex=False)
+    fig, axes = plt.subplots(n, 1, figsize=(13, 3.4 * n + 1.0), sharex=False)
     if n == 1:
         axes = [axes]
-    fig.suptitle(f"Espectrogramas — {filename}", fontsize=13, fontweight="bold")
+    # fig.suptitle(f"Espectrogramas — {filename}", fontsize=16, fontweight="bold")
+    # Más aire vertical entre subplots para evitar que el título de uno se
+    # superponga con el eje de tiempo del anterior.
+    fig.subplots_adjust(hspace=0.25, top=0.92, bottom=0.08)
 
     last_img = None
     for idx, (ax, (title, p)) in enumerate(zip(axes, panels)):
@@ -107,17 +111,20 @@ def plot_panels(filename, panels):
             vmax=0,
         )
         ax.set_ylim(0, FMAX)
-        ax.set_title(title)
-        ax.set_ylabel("Frecuencia [Hz]")
+        ax.set_title(title, fontsize=14)
+        ax.set_ylabel("Frecuencia [Hz]", fontsize=12)
+        ax.tick_params(axis="both", labelsize=11)
         # Quitar el "Time" que librosa añade en cada subplot;
         # solo dejamos la etiqueta en el último.
         if idx < len(panels) - 1:
             ax.set_xlabel("")
         else:
-            ax.set_xlabel("Tiempo [s]")
+            ax.set_xlabel("Tiempo [s]", fontsize=12)
 
-    fig.colorbar(last_img, ax=axes, format="%+2.0f dB",
-                 location="right", shrink=0.85, pad=0.02, label="dB")
+    cbar = fig.colorbar(last_img, ax=axes, format="%+2.0f dB",
+                        location="right", shrink=0.85, pad=0.02, label="dB")
+    cbar.ax.tick_params(labelsize=11)
+    cbar.set_label("dB", fontsize=12)
 
     print(f"  Mostrando: {filename}  (cerrá la ventana para continuar)")
     plt.show()
@@ -171,6 +178,24 @@ def main():
     if args.shuffle:
         rng = random.Random(args.seed)
         rng.shuffle(matches)
+
+    # Si se especificó un URI concreto, moverlo al principio (comparación por
+    # nombre sin extensión, para que "audio_15_0093" haga match con
+    # "audio_15_0093.mp3", ".wav", etc.).
+    if SPECIFIC_URI:
+        target = SPECIFIC_URI.strip()
+        idx = next(
+            (i for i, (name, _) in enumerate(matches)
+             if name == target or Path(name).stem == target),
+            None,
+        )
+        if idx is None:
+            print(f"[aviso] SPECIFIC_URI={target!r} no se encontró entre las "
+                  f"coincidencias; se ignora.\n")
+        else:
+            matches = [matches[idx]] + matches[:idx] + matches[idx + 1:]
+            print(f"Comenzando por SPECIFIC_URI={target!r} "
+                  f"(match: {matches[0][0]}).\n")
 
     if args.max_n is not None:
         matches = matches[:args.max_n]

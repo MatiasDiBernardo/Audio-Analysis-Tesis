@@ -10,7 +10,7 @@ import numpy as np
 from scipy import stats
 
 from data_mos import rta_TTS_MOS_QwenTTS_es, rta_TTS_MOS_F5TTS_es
-from data_likelihood import LHOOD_VALUES
+from data_likelihood import LHOOD_VALUES_FILT
 
 # Modelos TTS a comparar: (nombre_dataset, label, color)
 TTS_MODELS = [
@@ -50,7 +50,7 @@ def _collect_data(config_TTS_MOS_es):
             print(f"[warning] MOS key faltante: {mos_key}")
             continue
 
-        l_mean, _ = LHOOD_VALUES[lhood_key]
+        l_mean, _ = LHOOD_VALUES_FILT[lhood_key]
         m_mean, m_std = config_TTS_MOS_es[mos_key]
 
         labels.append(_short_label(lhood_key))
